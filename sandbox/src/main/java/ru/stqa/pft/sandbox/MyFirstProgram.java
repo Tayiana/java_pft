@@ -2,25 +2,24 @@ package ru.stqa.pft.sandbox;
 
 public class MyFirstProgram {
 
-    public static void main(String[] args) {
-        hello("world");
-        hello("Alexei");
-        hello("Tatiana");
+  public static void main(String[] args) {
+    hello("Alexei");
 
-        double l = 5.0;
-        System.out.println("Площадь квадрата со стороной " + l + " = " + area(l));
+    Point p = new Point(1, 12, 5, 26);
+    System.out.println("Задание 2.Потренироваться использовать функции, классы, объекты и методы. Решение:");
+    System.out.println("Координаты точки А (" + p.xa + ";" + p.ya + ") ");
+    System.out.println("Координаты точки B (" + p.xb + ";" + p.yb + ") ");
+    System.out.println("Расстояние между точками А и B = " + area(p));
+  }
 
-        double a = 4;
-        double b = 6;
-        System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + area(a,b));
-    }
-    public static void hello (String somebody) {
-        System.out.println("Hello, " + somebody + "!");
-    }
-    public static double area(double len) {
-        return len * len;
+  public static void hello(String somebody) {
+    System.out.println("Hello, " + somebody + "!");
+  }
+
+  public static double area(Point p) {
+    return Math.round((Math.sqrt((p.xb - p.xa)*(p.xb - p.xa)+(p.yb - p.ya)*(p.yb - p.ya)))*100)/100D;
+  }
 }
-    public static double area(double a, double b) {
-        return a * b;
-    }
-    }
+
+
+
