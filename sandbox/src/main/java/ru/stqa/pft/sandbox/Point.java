@@ -13,4 +13,8 @@ public class Point {
     this.xb = xb;
     this.yb = yb;
   }
+  public double area() {
+    return Math.round((Math.sqrt((this.xb - this.xa)*(this.xb - this.xa)+(this.yb - this.ya)*(this.yb - this.ya)))*100)/100D;
+  }
+
 }
