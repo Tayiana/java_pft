@@ -8,22 +8,16 @@ public class MyFirstProgram {
     Square s = new Square(5);
     System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
 
-    Point p = new Point(1, 12, 5, 26);
-    System.out.println("Задание 2.Потренироваться использовать функции, классы, объекты и методы. Решение:");
-    System.out.println("Координаты точки А (" + p.xa + ";" + p.ya + ") ");
-    System.out.println("Координаты точки B (" + p.xb + ";" + p.yb + ") ");
-    System.out.println("Расстояние между точками А и B = " + area(p));
-  }
+    Rectangle r = new Rectangle(5, 6);
+    System.out.println("Площадь прямоугольника со стороной " + r.a + " ; " + r.b + " = " + r.area());
+
+    Point p1 = new Point (22.0, 12.0);
+    Point p2 = new Point(5.0, 26.0);
+
+    System.out.println("Расстояние между точками А (" + p1.x + ";" + p1.y +") и B (" + p2.x + ";" + p2.y +") = " + p1.distance(p2));
+   }
 
   public static void hello(String somebody) {
     System.out.println("Hello, " + somebody + "!");
   }
-
-  public static double area(Point p) {
-    return Math.round((Math.sqrt((p.xb - p.xa)*(p.xb - p.xa)+(p.yb - p.ya)*(p.yb - p.ya)))*100)/100D;
-  }
-
 }
-
-
-
