@@ -1,21 +1,21 @@
 package ru.stqa.pft.addressbook;
 
 import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.*;
+
 import static org.testng.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class GroupCreationTests {
   private WebDriver wd;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
+
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
-    baseUrl = "https://www.katalon.com/";
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
     wd.findElement(By.name("user")).click();
@@ -51,10 +51,6 @@ public class GroupCreationTests {
   @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {
     wd.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
   }
 
   private boolean isElementPresent(By by) {
@@ -75,18 +71,5 @@ public class GroupCreationTests {
     }
   }
 
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = wd.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
+
 }
