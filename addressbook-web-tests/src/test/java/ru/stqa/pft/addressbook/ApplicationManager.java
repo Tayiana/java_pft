@@ -60,7 +60,7 @@ public class ApplicationManager {
   }
 
   public void gotoGroupPage() {
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]")).click();
+    wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   public void stop() {
