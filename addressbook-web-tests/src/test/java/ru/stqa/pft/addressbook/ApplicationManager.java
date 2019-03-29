@@ -22,10 +22,11 @@ public class ApplicationManager {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='User:'])[1]/following::label[1]")).click();
+    wd.findElement(By.xpath("//form[@id='LoginForm']/label")).click();
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
+
   }
 
   public void logout() {
