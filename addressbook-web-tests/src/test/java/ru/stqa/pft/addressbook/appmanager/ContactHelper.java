@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.GroupContacts;
 
-public class ContactHelper extends HelperBase{
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
     super(wd);
@@ -21,40 +21,27 @@ public class ContactHelper extends HelperBase{
     typecontact(By.name("email"), groupContacts.getEmail());
   }
 
-  public void gotoHome() {
-    clic(By.linkText("home"));
-  }
-
   public void gotoAddNew() {
-    clic(By.linkText("add new"));}
-
-
-  public void selectContact() {
-    clic(By.linkText("selected[]"));
-  }
-
-  public void clicDelete() {
-    clic(By.linkText("//input[@value='Delete']"));
-  }
-
-  public void clicOk() {
-    clic(By.linkText("update"));
-  }
-
-  public void editContact() {
-    clic(By.linkText("//img[@alt='Edit']"));
-
-  }
-
-  public void updateContact() {
-    clic(By.xpath("(//input[@name='update'])[2]"));
+    clic(By.linkText("add new"));
   }
 
   public void selectId() {
-    clic(By.linkText("name=selected[]"));
+    clic(By.id("21"));
+  }
+
+  public void updateContact() {
+    clic(By.xpath("(//img[@alt='Edit'])[3]"));
   }
 
   public void gotoPageHome() {
     clic(By.linkText("home"));
+  }
+
+  public void gotoHome() {
+    clic(By.linkText("home"));
+  }
+
+  public void saveContact() {
+    clic(By.xpath("(//input[@name='update'])[2]"));
   }
 }

@@ -10,8 +10,9 @@ public class ContactModificationTests extends TestBase{
     app.getNavigationHelper().gotoGroupPage();
     app.getContactHelper().gotoPageHome();
     app.getContactHelper().selectId();
-    app.getContactHelper().editContact();
-    app.getContactHelper().fillContactForm( new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru"));
     app.getContactHelper().updateContact();
+    app.getContactHelper().fillContactForm( new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru"));
+    app.getContactHelper().saveContact();
+    app.getContactHelper().gotoHome();
   }
 }
