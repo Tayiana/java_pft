@@ -40,4 +40,21 @@ public class ContactHelper extends HelperBase{
   public void clicOk() {
     clic(By.linkText("update"));
   }
+
+  public void editContact() {
+    clic(By.linkText("//img[@alt='Edit']"));
+
+  }
+
+  public void updateContact() {
+    clic(By.xpath("(//input[@name='update'])[2]"));
+  }
+
+  public void selectId() {
+    clic(By.linkText("name=selected[]"));
+  }
+
+  public void gotoPageHome() {
+    clic(By.linkText("home"));
+  }
 }

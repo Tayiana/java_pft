@@ -9,6 +9,7 @@ public class CreationNewContact extends TestBase {
 
   @Test
   public void testCreationNewContact() throws Exception {
+    app.getNavigationHelper().gotoGroupPage();
     app.getContactHelper().gotoAddNew();
     app.getContactHelper().fillContactForm( new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru"));
     app.getContactHelper().gotoHome();
