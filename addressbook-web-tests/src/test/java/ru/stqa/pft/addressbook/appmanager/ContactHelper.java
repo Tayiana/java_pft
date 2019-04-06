@@ -28,6 +28,9 @@ public class ContactHelper extends HelperBase {
   public void selectId() {
     clic(By.id("21"));
   }
+  public void selectnewId() {
+    clic(By.id("22"));
+  }
 
   public void updateContact() {
     clic(By.xpath("(//img[@alt='Edit'])[3]"));
@@ -43,5 +46,9 @@ public class ContactHelper extends HelperBase {
 
   public void saveContact() {
     clic(By.xpath("(//input[@name='update'])[2]"));
+  }
+
+  public void deleteContact() {
+    clic(By.xpath("//input[@value='Delete']"));
   }
 }
