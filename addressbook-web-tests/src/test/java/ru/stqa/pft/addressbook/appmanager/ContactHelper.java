@@ -29,7 +29,7 @@ public class ContactHelper extends HelperBase {
     clic(By.id("21"));
   }
   public void selectnewId() {
-    clic(By.id("22"));
+    clic(By.id("23"));
   }
 
   public void updateContact() {
