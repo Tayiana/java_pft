@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.GroupContacts;
 
-public class GroupCreationNewContact {
+public class GroupCreationNewContact extends TestBase {
   private WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
