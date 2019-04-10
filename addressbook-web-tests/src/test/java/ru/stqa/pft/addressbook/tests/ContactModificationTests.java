@@ -9,7 +9,7 @@ public class ContactModificationTests extends TestBase{
   public void testContactModification() {
     app.getNavigationHelper().gotoGroupPage();
     app.getContactHelper().gotoPageHome();
-    app.getContactHelper().selectId();
+    app.getContactHelper().selectContact();
     app.getContactHelper().updateContact();
     app.getContactHelper().fillContactForm( new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru"));
     app.getContactHelper().saveContact();

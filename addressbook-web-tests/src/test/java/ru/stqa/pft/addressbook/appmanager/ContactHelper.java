@@ -25,11 +25,8 @@ public class ContactHelper extends HelperBase {
     clic(By.linkText("add new"));
   }
 
-  public void selectId() {
-    clic(By.id("21"));
-  }
-  public void selectnewId() {
-    clic(By.id("25"));
+  public void selectContact() {
+    clic(By.name("selected[]"));
   }
 
   public void updateContact() {
