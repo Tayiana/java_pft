@@ -29,15 +29,12 @@ public class ContactHelper extends HelperBase {
     clic(By.name("selected[]"));
   }
 
-  public void updateContact() {
-    clic(By.xpath("(//img[@alt='Edit'])[3]"));
+  public void editContact() {
+
+    clic(By.xpath("//img[@alt='Edit']"));
   }
 
-  public void gotoPageHome() {
-    clic(By.linkText("home"));
-  }
-
-  public void gotoHome() {
+    public void gotoHome() {
     clic(By.linkText("home"));
   }
 
@@ -51,4 +48,19 @@ public class ContactHelper extends HelperBase {
     public void alertdelete() {
       wd.switchTo().alert().accept();
     }
+
+  public void createContact(GroupContacts contacts) {
+    gotoAddNew();
+    fillContactForm(contacts);
+    clickEnter();
+    gotoHome();
+  }
+
+  public boolean isThereTheContact() {
+   return isElementPresent(By.name("selected[]"));
+  }
+
+  public void clickEnter() {
+    clic(By.xpath("(//input[@name='submit'])[2]"));
+  }
 }
