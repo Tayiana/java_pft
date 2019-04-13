@@ -12,5 +12,6 @@ public class SessionHelper extends HelperBase {
     type(By.name("user"),"admin");
     type(By.name("pass"),"secret");
     clic(By.xpath("//form[@id='LoginForm']/label"));
+    clic(By.xpath("//input[@value='Login']"));
   }
 }

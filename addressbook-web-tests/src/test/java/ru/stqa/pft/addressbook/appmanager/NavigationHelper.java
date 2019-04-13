@@ -10,8 +10,7 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void gotoGroupPage() {
-    clic(By.xpath("//input[@value='Login']"));
+    clic(By.linkText("groups"));
   }
-
 
 }

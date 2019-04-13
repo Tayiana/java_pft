@@ -52,4 +52,6 @@ public class GroupContacts {
   public String getEmail() {
     return email;
   }
+
+
 }

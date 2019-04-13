@@ -19,7 +19,8 @@ public class ContactHelper extends HelperBase {
     typecontact(By.name("address"), groupContacts.getAddress());
     typecontact(By.name("home"), groupContacts.getPhone());
     typecontact(By.name("email"), groupContacts.getEmail());
-  }
+
+   }
 
   public void gotoAddNew() {
     clic(By.linkText("add new"));
