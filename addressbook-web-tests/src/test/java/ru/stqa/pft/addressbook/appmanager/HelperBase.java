@@ -12,14 +12,16 @@ public class HelperBase {
     this.wd = wd;
   }
 
-  public void clic(By locator) {
+  public void click(By locator) {
     wd.findElement(locator).click();
   }
 
   public void type(By locator, String text) {
-    clic(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
+    click(locator);
+    if (text != null) {
+      wd.findElement(locator).clear();
+      wd.findElement(locator).sendKeys(text);
+    }
   }
   public boolean isAlertPresent() {
     try {
@@ -28,10 +30,6 @@ public class HelperBase {
     } catch (NoAlertPresentException e) {
       return false;
     }
-  }
-
-  public void click(By locator) {
-    wd.findElement(locator).click();
   }
 
   public void typecontact(By locator, String text) {

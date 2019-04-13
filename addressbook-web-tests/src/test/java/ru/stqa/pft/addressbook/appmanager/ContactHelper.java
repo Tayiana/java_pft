@@ -23,7 +23,7 @@ public class ContactHelper extends HelperBase {
    }
 
   public void gotoAddNew() {
-    clic(By.linkText("add new"));
+    click(By.linkText("add new"));
   }
 
   public void selectContact(int index) {
@@ -32,19 +32,19 @@ public class ContactHelper extends HelperBase {
 
   public void editContact() {
 
-    clic(By.xpath("//img[@alt='Edit']"));
+    click(By.xpath("//img[@alt='Edit']"));
   }
 
     public void gotoHome() {
-    clic(By.linkText("home"));
+    click(By.linkText("home"));
   }
 
   public void saveContact() {
-    clic(By.xpath("(//input[@name='update'])[2]"));
+    click(By.xpath("(//input[@name='update'])[2]"));
   }
 
   public void deleteContact() {
-    clic(By.xpath("//input[@value='Delete']"));
+    click(By.xpath("//input[@value='Delete']"));
   }
     public void alertdelete() {
       wd.switchTo().alert().accept();
@@ -62,7 +62,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void clickEnter() {
-    clic(By.xpath("(//input[@name='submit'])[2]"));
+    click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
   public int getContactCount() {
