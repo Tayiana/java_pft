@@ -26,9 +26,9 @@ public class ContactHelper extends HelperBase {
     clic(By.linkText("add new"));
   }
 
-  public void selectContact() {
-    clic(By.name("selected[]"));
-  }
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+    }
 
   public void editContact() {
 
