@@ -12,6 +12,7 @@ public class CreationNewContact extends TestBase {
   public void testCreationNewContact() throws Exception {
     app.getNavigationHelper().gotoGroupContact();
     int before = app.getContactHelper().getContactCount();
+
     app.getContactHelper().createContact(new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru"));
     int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after, before + 1);
