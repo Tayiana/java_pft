@@ -13,4 +13,8 @@ public class NavigationHelper extends HelperBase {
     clic(By.linkText("groups"));
   }
 
+
+  public void gotoGroupContact() {
+    clic(By.linkText("home"));
+  }
 }

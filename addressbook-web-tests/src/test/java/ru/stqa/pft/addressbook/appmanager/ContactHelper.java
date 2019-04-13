@@ -64,4 +64,8 @@ public class ContactHelper extends HelperBase {
   public void clickEnter() {
     clic(By.xpath("(//input[@name='submit'])[2]"));
   }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
