@@ -8,8 +8,6 @@ import ru.stqa.pft.addressbook.model.GroupContacts;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.openqa.selenium.By.tagName;
-
 public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
@@ -81,10 +79,9 @@ public class ContactHelper extends HelperBase {
     for (WebElement element : elements) {
 
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-
       String name = element.getText();
       String lastname = element.getText();
-      GroupContacts contact = new GroupContacts( name, null, lastname, null, null, null, null, null);
+      GroupContacts contact = new GroupContacts( id, name, null, lastname, null, null, null, null, null);
       contacts.add(contact);
     }
 
