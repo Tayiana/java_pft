@@ -5,16 +5,16 @@ import org.testng.annotations.*;
 
 import ru.stqa.pft.addressbook.model.GroupContacts;
 
-public class CreationNewContact extends TestBase {
+import java.util.List;
 
+public class CreationNewContact extends TestBase {
 
   @Test
   public void testCreationNewContact() throws Exception {
     app.getNavigationHelper().gotoGroupContact();
-    int before = app.getContactHelper().getContactCount();
-
-    app.getContactHelper().createContact(new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru"));
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before + 1);
+    List<GroupContacts> before = app.getContactHelper().getContactList();
+    app.getContactHelper().createContact(new GroupContacts("Name", null, "NameLast", null, null, null, null, null));
+    List<GroupContacts> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size() + 1);
   }
 }

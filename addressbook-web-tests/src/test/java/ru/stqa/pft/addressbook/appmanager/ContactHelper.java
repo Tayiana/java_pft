@@ -2,7 +2,11 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupContacts;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -67,5 +71,18 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<GroupContacts> getContactList() {
+    List<GroupContacts> contacts = new ArrayList<GroupContacts>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("checkbox"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      String lastname = element.getText();
+      GroupContacts contact = new GroupContacts( name, null, lastname, null, null, null, null, null);
+      contacts.add(contact);
+    }
+
+    return contacts;
   }
 }
