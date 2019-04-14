@@ -75,7 +75,7 @@ public class ContactHelper extends HelperBase {
 
   public List<GroupContacts> getContactList() {
     List<GroupContacts> contacts = new ArrayList<GroupContacts>();
-    List<WebElement> elements = wd.findElements(By.cssSelector("checkbox"));
+    List<WebElement> elements = wd.findElements(By.name("selected[]"));
     for (WebElement element : elements) {
       String name = element.getText();
       String lastname = element.getText();
