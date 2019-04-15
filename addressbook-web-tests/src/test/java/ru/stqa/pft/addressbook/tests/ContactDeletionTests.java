@@ -10,7 +10,7 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
   public boolean acceptNextAlert = true;
 
-  @Test
+  @Test(enabled = false)
   public void testContactDeletion() {
     app.getNavigationHelper().gotoGroupContact();
     if (! app.getContactHelper().isThereTheContact()) {

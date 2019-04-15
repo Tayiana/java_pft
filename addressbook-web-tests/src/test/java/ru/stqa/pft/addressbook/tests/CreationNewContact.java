@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CreationNewContact extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testCreationNewContact() throws Exception {
     app.getNavigationHelper().gotoGroupContact();
     List<GroupContacts> before = app.getContactHelper().getContactList();
