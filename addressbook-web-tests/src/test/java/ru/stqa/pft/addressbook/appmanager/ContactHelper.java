@@ -87,4 +87,11 @@ public class ContactHelper extends HelperBase {
 
     return contacts;
   }
+  public void modifyContact(int index, GroupContacts contact) {
+    selectContact(index);
+    editContact();
+    fillContactForm(contact);
+    saveContact();
+    gotoHome();
+  }
 }
