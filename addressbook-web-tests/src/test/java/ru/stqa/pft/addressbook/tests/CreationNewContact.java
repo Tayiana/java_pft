@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import ru.stqa.pft.addressbook.model.GroupContacts;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,11 +12,11 @@ public class CreationNewContact extends TestBase {
 
   @Test(enabled = false)
   public void testCreationNewContact() throws Exception {
-    app.getNavigationHelper().gotoGroupContact();
-    List<GroupContacts> before = app.getContactHelper().getContactList();
+    app.goTo().GroupContact();
+    List<GroupContacts> before = app.contact().list();
     GroupContacts contact = new GroupContacts("Name", null, "NameLast", null, null, null, null, null);
-    app.getContactHelper().createContact(contact);
-    List<GroupContacts> after = app.getContactHelper().getContactList();
+    app.contact().create(contact);
+    List<GroupContacts> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
 

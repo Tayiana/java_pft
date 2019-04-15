@@ -12,18 +12,18 @@ public class ContactModificationTests extends TestBase{
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.getNavigationHelper().gotoGroupContact();
-    if (! app.getContactHelper().isThereTheContact()) {
-      app.getContactHelper().createContact( new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru")); }
+    app.goTo().GroupContact();
+    if (! app.contact().isThereTheContact()) {
+      app.contact().create( new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru")); }
   }
 
   @Test(enabled = false)
   public void testContactModification() {
-    List<GroupContacts> before = app.getContactHelper().getContactList();
+    List<GroupContacts> before = app.contact().list();
     int index = before.size() - 1;
     GroupContacts contact = new GroupContacts(before.get(before.size() - 1).getId(), "Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru");
-    app.getContactHelper().modifyContact(index, contact);
-    List<GroupContacts> after = app.getContactHelper().getContactList();
+    app.contact().modify(index, contact);
+    List<GroupContacts> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() );
 
     before.remove(index);
