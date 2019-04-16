@@ -14,13 +14,14 @@ public class CreationNewContact extends TestBase {
   public void testCreationNewContact() throws Exception {
     app.goTo().GroupContact();
     List<GroupContacts> before = app.contact().list();
-    GroupContacts contact = new GroupContacts("Name", null, "NameLast", null, null, null, null, null);
+    GroupContacts contact = new GroupContacts("Name", "Name middle", "NameLast", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru");
     app.contact().create(contact);
     List<GroupContacts> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     contact.setId(after.stream().max(Comparator.comparingInt(GroupContacts::getId)).get().getId());
     before.add(contact);
+
     Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
   }
 }

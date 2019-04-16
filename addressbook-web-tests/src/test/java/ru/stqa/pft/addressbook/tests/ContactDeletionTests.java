@@ -18,7 +18,7 @@ public class ContactDeletionTests extends TestBase {
       app.contact().create( new GroupContacts("Name", "Name middle", "Name Last", "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru")); }
   }
 
-  @Test(enabled = false)
+  @Test
   public void testContactDeletion() {
     List<GroupContacts> before = app.contact().list();
     int index = before.size() - 1;
