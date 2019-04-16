@@ -30,7 +30,7 @@ public class GroupContacts {
   }
 
   public GroupContacts( String firstname, String middlename, String lastname, String nick, String company, String address, String phone, String email) {
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
