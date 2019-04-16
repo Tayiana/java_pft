@@ -77,10 +77,10 @@ public class ContactHelper extends HelperBase {
     List<GroupContacts> contacts = new ArrayList<GroupContacts>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
-      int id = Integer.parseInt(element.findElement(By.tagName("td")).findElement(By.tagName("input")).getAttribute("value"));
-      String name = element.getText();
-      String lastname = element.getText();
-      GroupContacts contact = new GroupContacts( id, name, "Name middle", lastname, "Nick", "MyCompany", "My Street", "+79067777777", "email@mail.ru");
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      String name = element.findElement(By.xpath("./td[3]")).getText();
+      String lastname = element.findElement(By.xpath("./td[2]")).getText();
+      GroupContacts contact = new GroupContacts( id, name, "null", lastname, "null", "null", "null", "null", "null");
       contacts.add(contact);
     }
 
