@@ -75,7 +75,7 @@ public class ContactHelper extends HelperBase {
 
   public List<GroupContacts> list() {
     List<GroupContacts> contacts = new ArrayList<GroupContacts>();
-    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+    List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
 
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));

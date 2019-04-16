@@ -4,13 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import ru.stqa.pft.addressbook.model.GroupContacts;
-
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
 public class CreationNewContact extends TestBase {
 
-  @Test(enabled = false)
+  @Test
   public void testCreationNewContact() throws Exception {
     app.goTo().GroupContact();
     List<GroupContacts> before = app.contact().list();
@@ -19,14 +19,7 @@ public class CreationNewContact extends TestBase {
     List<GroupContacts> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-
-    int max = 0;
-    for (GroupContacts g : after) {
-      if (g.getId() > max) {
-        max = g.getId();
-      }
-    }
-    contact.setId(max);
+    contact.setId(after.stream().max(Comparator.comparingInt(GroupContacts::getId)).get().getId());
     before.add(contact);
     Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
   }
