@@ -8,6 +8,7 @@ import ru.stqa.pft.addressbook.model.GroupContacts;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactModificationTests extends TestBase{
 
@@ -20,20 +21,16 @@ public class ContactModificationTests extends TestBase{
 
   @Test
   public void testContactModification() {
-    List<GroupContacts> before = app.contact().list();
-    int index = before.size() - 1;
-    GroupContacts contact = new GroupContacts().withId(before.get(index).getId()).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)");
-    app.contact().modify(index, contact);
-    List<GroupContacts> after = app.contact().list();
+    Set<GroupContacts> before = app.contact().all();
+    GroupContacts modifiedContact = before.iterator().next();
+    GroupContacts contact = new GroupContacts().withId(modifiedContact.getId()).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)");
+    app.contact().modify(contact);
+    Set<GroupContacts> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() );
 
-
-    before.remove(index);
+    before.remove(modifiedContact);
     before.add(contact);
-    Comparator<? super GroupContacts> byId = Comparator.comparingInt(GroupContacts::getId);
-    before.sort(byId);
-    after.sort(byId);
-    Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+    Assert.assertEquals(before,after);
     }
 
   }

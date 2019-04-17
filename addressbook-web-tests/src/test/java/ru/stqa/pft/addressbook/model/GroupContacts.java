@@ -125,5 +125,4 @@ public class GroupContacts {
   public int hashCode() {
     return Objects.hash(id, firstname, lastname);
   }
-
 }

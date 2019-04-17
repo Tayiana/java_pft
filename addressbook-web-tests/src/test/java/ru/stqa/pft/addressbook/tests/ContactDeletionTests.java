@@ -6,10 +6,11 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupContacts;
 
 import java.util.List;
+import java.util.Set;
 
 
 public class ContactDeletionTests extends TestBase {
-  public boolean acceptNextAlert = true;
+
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -20,18 +21,14 @@ public class ContactDeletionTests extends TestBase {
 
   @Test
   public void testContactDeletion() {
-    List<GroupContacts> before = app.contact().list();
-    int index = before.size() - 1;
-    app.contact().selectContact(index);
-        acceptNextAlert = true;
-
-        app.contact().deleteContact();
-    app.contact().alertdelete();
+    Set<GroupContacts> before = app.contact().all();
+    GroupContacts deleteContact = before.iterator().next();
+    app.contact().deleteContact(deleteContact);
     app.contact().gotoHome();
-        List<GroupContacts> after = app.contact().list();
-    Assert.assertEquals(after.size(), index);
+        Set<GroupContacts> after = app.contact().all();
+    Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(index);
+    before.remove(deleteContact);
     Assert.assertEquals(before, after);
 
   }

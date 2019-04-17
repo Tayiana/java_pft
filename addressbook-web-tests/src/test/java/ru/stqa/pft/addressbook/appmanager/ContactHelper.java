@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupContacts;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -30,13 +31,14 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-    }
+
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value ='" + id + "']")).click();
+   }
+
 
   public void editContact() {
-
-    click(By.xpath("//img[@alt='Edit']"));
+   click(By.xpath("//img[@alt='Edit']"));
   }
 
     public void gotoHome() {
@@ -47,12 +49,16 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
-  public void deleteContact() {
+
+    public boolean acceptNextAlert = true;
+
+  public void deleteContact(GroupContacts contact) {
+    selectContactById(contact.getId());
     click(By.xpath("//input[@value='Delete']"));
+    acceptNextAlert = true;
+    wd.switchTo().alert().accept();
   }
-    public void alertdelete() {
-      wd.switchTo().alert().accept();
-    }
+
 
   public void create(GroupContacts contacts) {
     gotoAddNew();
@@ -73,24 +79,27 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupContacts> list() {
-    List<GroupContacts> contacts = new ArrayList<GroupContacts>();
+
+
+  public Set<GroupContacts> all() {
+    Set<GroupContacts> contacts = new HashSet<>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String name = element.findElement(By.xpath("./td[3]")).getText();
       String lastname = element.findElement(By.xpath("./td[2]")).getText();
       contacts.add(new GroupContacts().withId(id).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)"));
-
     }
-
     return contacts;
   }
-  public void modify(int index, GroupContacts contact) {
+
+  public void modify(GroupContacts contact) {
+    selectContactById(contact.getId());
     editContact();
     fillContactForm(contact);
     saveContact();
     gotoHome();
   }
+
 
 }
