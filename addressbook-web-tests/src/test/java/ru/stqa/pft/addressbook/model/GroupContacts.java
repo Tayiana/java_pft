@@ -3,42 +3,66 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class GroupContacts {
+
+
+  private int id =Integer.MAX_VALUE;
+  private String firstname;
+  private String middlename;
+  private String lastname;
+  private  String nick;
+  private  String company;
+  private  String address;
+  private  String phone;
+
+  public GroupContacts withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public GroupContacts withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public GroupContacts withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public GroupContacts withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public GroupContacts withNick(String nick) {
+    this.nick = nick;
+    return this;
+  }
+
+  public GroupContacts withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public GroupContacts withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public GroupContacts withPhone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  public GroupContacts withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  private  String email;
+
   public void setId(int id) {
     this.id = id;
-  }
-
-  private int id;
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String nick;
-  private final String company;
-  private final String address;
-  private final String phone;
-  private final String email;
-
-  public GroupContacts(int id,String firstname, String middlename, String lastname, String nick, String company, String address, String phone, String email) {
-    this.id = id;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nick = nick;
-    this.company = company;
-    this.address = address;
-    this.phone = phone;
-    this.email = email;
-  }
-
-  public GroupContacts( String firstname, String middlename, String lastname, String nick, String company, String address, String phone, String email) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nick = nick;
-    this.company = company;
-    this.address = address;
-    this.phone = phone;
-    this.email = email;
   }
 
   public int getId() {
