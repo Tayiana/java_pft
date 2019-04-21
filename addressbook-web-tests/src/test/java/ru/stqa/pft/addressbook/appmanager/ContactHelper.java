@@ -56,6 +56,7 @@ public class ContactHelper extends HelperBase {
     selectContactById(contact.getId());
     click(By.xpath("//input[@value='Delete']"));
     acceptNextAlert = true;
+    contactCache = null;
     wd.switchTo().alert().accept();
   }
 
@@ -64,6 +65,7 @@ public class ContactHelper extends HelperBase {
     gotoAddNew();
     fillContactForm(contacts);
     clickEnter();
+    contactCache = null;
     gotoHome();
   }
 
@@ -79,18 +81,21 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-
+  private Contacts contactCache = null;
 
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String name = element.findElement(By.xpath("./td[3]")).getText();
       String lastname = element.findElement(By.xpath("./td[2]")).getText();
-      contacts.add(new GroupContacts().withId(id).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)"));
+      contactCache.add(new GroupContacts().withId(id).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)"));
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
 
   public void modify(GroupContacts contact) {
@@ -98,6 +103,7 @@ public class ContactHelper extends HelperBase {
     editContact();
     fillContactForm(contact);
     saveContact();
+    contactCache = null;
     gotoHome();
   }
 
