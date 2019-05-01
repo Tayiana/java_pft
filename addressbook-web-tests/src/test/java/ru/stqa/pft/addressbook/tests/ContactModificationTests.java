@@ -7,7 +7,6 @@ import ru.stqa.pft.addressbook.model.GroupContacts;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class ContactModificationTests extends TestBase{
 
@@ -15,14 +14,14 @@ public class ContactModificationTests extends TestBase{
   public void ensurePreconditions() {
     app.goTo().GroupContact();
     if (! app.contact().isThereTheContact()) {
-      app.contact().create( new GroupContacts().withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)")); }
+      app.contact().create( new GroupContacts().withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withHomephone("+79067777777").withEmail("email@mail.ru)")); }
   }
 
   @Test
   public void testContactModification() {
     Contacts before = app.contact().all();
     GroupContacts modifiedContact = before.iterator().next();
-    GroupContacts contact = new GroupContacts().withId(modifiedContact.getId()).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)");
+    GroupContacts contact = new GroupContacts().withId(modifiedContact.getId()).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withHomephone("+79067777777").withEmail("email@mail.ru)");
     app.contact().modify(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size()));
     Contacts after = app.contact().all();

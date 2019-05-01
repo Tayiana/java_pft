@@ -6,11 +6,9 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupContacts;
 
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactDeletionTests extends TestBase {
 
+public class ContactPhoneTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -19,15 +17,14 @@ public class ContactDeletionTests extends TestBase {
       app.contact().create( new GroupContacts().withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withHomephone("+79067777777").withEmail("email@mail.ru)")); }
   }
 
-  @Test
-  public void testContactDeletion() {
-    Contacts before = app.contact().all();
-    GroupContacts deleteContact = before.iterator().next();
-    app.contact().deleteContact(deleteContact);
-    app.contact().gotoHome();
-    assertThat(app.contact().getContactCount(), equalTo(before.size() -1));
-    Contacts after = app.contact().all();
-    assertThat(after, equalTo(before.without(deleteContact)));
-    }
 
+  @Test
+  public void testComparisonOfInformationPhons() {
+    app.goTo().GroupContact();
+    Contacts before = app.contact().all();
+    GroupContacts contact = app.contact().all().iterator().next();
+    GroupContacts InfoFromEditForm = app.contact().infoFromEditForm(contact);
+
+
+  }
 }

@@ -22,7 +22,9 @@ public class ContactHelper extends HelperBase {
     typecontact(By.name("nickname"), groupContacts.getNick());
     typecontact(By.name("company"), groupContacts.getCompany());
     typecontact(By.name("address"), groupContacts.getAddress());
-    typecontact(By.name("home"), groupContacts.getPhone());
+    typecontact(By.name("home"), groupContacts.getHome());
+    typecontact(By.name("mobile"), groupContacts.getMobile());
+    typecontact(By.name("work"), groupContacts.getWork());
     typecontact(By.name("email"), groupContacts.getEmail());
 
    }
@@ -93,7 +95,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String name = element.findElement(By.xpath("./td[3]")).getText();
       String lastname = element.findElement(By.xpath("./td[2]")).getText();
-      contactCache.add(new GroupContacts().withId(id).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withPhone("+79067777777").withEmail("email@mail.ru)"));
+      contactCache.add(new GroupContacts().withId(id).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withHomephone("+79067777777").withEmail("email@mail.ru)"));
     }
     return new Contacts(contactCache);
   }
@@ -107,5 +109,21 @@ public class ContactHelper extends HelperBase {
     gotoHome();
   }
 
+public GroupContacts infoFromEditForm(GroupContacts contact) {
+    initContactModificationById(contact.getId());
+    String name = wd.findElement(By.name("Name")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new GroupContacts().withId(contact.getId()).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Nick").withCompany("MyCompany").withAddress("My Street").withHomephone("+79067777777").withEmail("email@mail.ru)");
 
+}
+  private void initContactModificationById(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
+  }
 }

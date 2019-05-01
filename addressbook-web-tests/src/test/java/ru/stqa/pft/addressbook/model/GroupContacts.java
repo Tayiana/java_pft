@@ -9,10 +9,15 @@ public class GroupContacts {
   private String firstname;
   private String middlename;
   private String lastname;
-  private  String nick;
-  private  String company;
-  private  String address;
-  private  String phone;
+  private String nick;
+  private String company;
+  private String address;
+  private String home;
+  private String mobile;
+  private String work;
+  private String email;
+
+
 
   public GroupContacts withId(int id) {
     this.id = id;
@@ -49,8 +54,17 @@ public class GroupContacts {
     return this;
   }
 
-  public GroupContacts withPhone(String phone) {
-    this.phone = phone;
+  public GroupContacts withHomephone(String home) {
+    this.home = home;
+    return this;
+  }
+  public GroupContacts withMobilphone(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  public GroupContacts withWorkphone(String work) {
+    this.work = work;
     return this;
   }
 
@@ -59,14 +73,11 @@ public class GroupContacts {
     return this;
   }
 
-  private  String email;
-
   public void setId(int id) {
     this.id = id;
   }
 
-  public int getId() {
-    return id;
+  public int getId() { return id;
   }
 
   public String getFirstname() {
@@ -93,9 +104,11 @@ public class GroupContacts {
     return address;
   }
 
-  public String getPhone() {
-    return phone;
-  }
+  public String getHome() { return home; }
+
+  public String getMobile() { return mobile; }
+
+  public String getWork() { return work; }
 
   public String getEmail() {
     return email;
