@@ -16,7 +16,8 @@ public class GroupContacts {
   private String mobile;
   private String work;
   private String email;
-
+  private String email2;
+  private String email3;
 
 
   public GroupContacts withId(int id) {
@@ -73,6 +74,16 @@ public class GroupContacts {
     return this;
   }
 
+  public GroupContacts withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public GroupContacts withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
   public void setId(int id) {
     this.id = id;
   }
@@ -112,6 +123,14 @@ public class GroupContacts {
 
   public String getEmail() {
     return email;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
   }
 
 
