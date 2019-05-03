@@ -17,18 +17,20 @@ public class ContactHelper extends HelperBase {
   }
 
   public void fillContactForm(GroupContacts groupContacts) {
-    typecontact(By.name("firstname"), groupContacts.getFirstname());
-    typecontact(By.name("middlename"), groupContacts.getMiddlename());
-    typecontact(By.name("lastname"), groupContacts.getLastname());
-    typecontact(By.name("nickname"), groupContacts.getNick());
-    typecontact(By.name("company"), groupContacts.getCompany());
-    typecontact(By.name("address"), groupContacts.getAddress());
-    typecontact(By.name("home"), groupContacts.getHome());
-    typecontact(By.name("mobile"), groupContacts.getMobile());
-    typecontact(By.name("work"), groupContacts.getWork());
-    typecontact(By.name("email"), groupContacts.getEmail());
-    typecontact(By.name("email2"), groupContacts.getEmail2());
-    typecontact(By.name("email3"), groupContacts.getEmail3());
+    type(By.name("firstname"), groupContacts.getFirstname());
+    type(By.name("middlename"), groupContacts.getMiddlename());
+    type(By.name("lastname"), groupContacts.getLastname());
+    type(By.name("nickname"), groupContacts.getNick());
+
+    attach(By.name("photo"),groupContacts.getPhoto());
+    type(By.name("company"), groupContacts.getCompany());
+    type(By.name("address"), groupContacts.getAddress());
+    type(By.name("home"), groupContacts.getHome());
+    type(By.name("mobile"), groupContacts.getMobile());
+    type(By.name("work"), groupContacts.getWork());
+    type(By.name("email"), groupContacts.getEmail());
+    type(By.name("email2"), groupContacts.getEmail2());
+    type(By.name("email3"), groupContacts.getEmail3());
 
   }
 
