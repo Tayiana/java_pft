@@ -115,27 +115,22 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(GroupContacts contact) {
-    /*selectContactById(contact.getId()); */
-    /*clickEditContact(contact.getId());*/
-    editContact();
+    editContact(contact.getId());
     fillContactForm(contact);
     saveContact();
     contactCache = null;
     gotoHome();
   }
 
-  /*public void editContact(int id) {
-    wd.findElements(By.xpath("//img[@alt='Edit']")).get(id).click();
-  } */
-
-  public void editContact() {
-    click(By.xpath("//img[@alt='Edit']"));
+  public void editContact(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
-  public void clickEditContact(int id) {
-    wd.findElements(By.xpath("//*[@alt='Edit']")).get(id).click(); }
+  /*public void editContact() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }*/
 
-  public GroupContacts infoFromEditForm(GroupContacts contact) {
+    public GroupContacts infoFromEditForm(GroupContacts contact) {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
