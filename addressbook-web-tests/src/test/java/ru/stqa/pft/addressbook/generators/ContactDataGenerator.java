@@ -1,5 +1,8 @@
 package ru.stqa.pft.addressbook.generators;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 import ru.stqa.pft.addressbook.model.GroupContacts;
 
 import java.io.File;
@@ -11,15 +14,30 @@ import java.util.List;
 
 public class ContactDataGenerator {
 
-  public static void main(String[] args) throws IOException {
-    int count = Integer.parseInt(args[0]);
-    File file = new File(args[1]);
+  @Parameter(names = "-c", description = "Group count")
+  public int count;
 
-    List<GroupContacts> groups = generateGroups(count);
-    save(groups, file);
+  @Parameter (names = "-f", description = "Target file")
+  public String file;
+
+  public static void main(String[] args) throws IOException {
+    ContactDataGenerator generator = new ContactDataGenerator();
+    JCommander jCommander = new JCommander(generator);
+    try {
+      jCommander.parse(args);
+    }
+    catch (ParameterException ex) {
+      jCommander.usage();
+      return;
+    }
+    generator.run();
   }
 
-  private static void save(List<GroupContacts> groups, File file) throws IOException {
+  private void run() throws IOException {
+    List<GroupContacts> groups = generateGroups(count);
+    save(groups, new File(file));}
+
+  private void save(List<GroupContacts> groups, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
     Writer writer = new FileWriter(file);
     for (GroupContacts group : groups) {
@@ -28,7 +46,7 @@ public class ContactDataGenerator {
     writer.close();
   }
 
-  private static List<GroupContacts> generateGroups(int count) {
+  private List<GroupContacts> generateGroups(int count) {
     List<GroupContacts> groups = new ArrayList<GroupContacts>();
     for (int i = 0; i < count; i++) {
       groups.add(new GroupContacts().withFirstname(String.format("firstname %s", i))
