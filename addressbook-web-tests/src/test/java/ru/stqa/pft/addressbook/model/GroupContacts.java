@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class GroupContacts {
 
-
   private int id =Integer.MAX_VALUE;
   private String firstname;
   private String middlename;
@@ -15,10 +14,29 @@ public class GroupContacts {
   private String home;
   private String mobile;
   private String work;
+  private String allPhones;
   private String email;
   private String email2;
   private String email3;
+  private String allEmails;
 
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public GroupContacts withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public GroupContacts withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
 
   public GroupContacts withId(int id) {
     this.id = id;

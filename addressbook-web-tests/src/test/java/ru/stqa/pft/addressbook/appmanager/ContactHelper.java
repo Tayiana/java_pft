@@ -66,6 +66,21 @@ public class ContactHelper extends HelperBase {
     gotoHome();
   }
 
+  public void modify(GroupContacts contact) {
+    editContact(contact.getId());
+    fillContactForm(contact);
+    saveContact();
+    contactCache = null;
+    gotoHome();
+  }
+
+  public void editContact(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+  }
+  /*public void editContact() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }*/
+
   public boolean isThereTheContact() {
     return isElementPresent(By.name("selected[]"));
   }
@@ -104,31 +119,14 @@ public class ContactHelper extends HelperBase {
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String address = cells.get(3).getText();
-      String[] allEmail = cells.get(4).getText().split("\n");
-      String[] phones = cells.get(5).getText().split("\n");
+      String allEmails = cells.get(4).getText();
+      String allPhones = cells.get(5).getText();
 
       contacts.add(new GroupContacts().withId(id).withLastname("NameLast").withFirstname("Name").withAddress("Москва, Красная площадь, 3")
-              .withEmail(allEmail[0]).withEmail2(allEmail[1]).withEmail3(allEmail[2])
-              .withHomephone(phones[0]).withMobilphone(phones[1]).withWorkphone(phones[2]));
+              .withAllEmails(allEmails).withAllPhones(allPhones));
     }
     return contacts;
   }
-
-  public void modify(GroupContacts contact) {
-    editContact(contact.getId());
-    fillContactForm(contact);
-    saveContact();
-    contactCache = null;
-    gotoHome();
-  }
-
-  public void editContact(int id) {
-    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
-  }
-
-  /*public void editContact() {
-    click(By.xpath("//img[@alt='Edit']"));
-  }*/
 
     public GroupContacts infoFromEditForm(GroupContacts contact) {
     initContactModificationById(contact.getId());
@@ -142,8 +140,9 @@ public class ContactHelper extends HelperBase {
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
-    return new GroupContacts().withId(contact.getId()).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Ленин").withCompany("КПСС").withAddress("Москва, Красная площадь, 3").withHomephone("+79067777777").withMobilphone("(7925)5656569").withWorkphone("56-89-985").withEmail("email@mail.ru").withEmail2("second@mail.ru").withEmail3("last@mail.ru");
-
+    return new GroupContacts().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withAddress(address)
+            .withHomephone(home).withMobilphone(mobile).withWorkphone(work).
+                    withEmail(email).withEmail2(email2).withEmail3(email3);
   }
 
   private void initContactModificationById(int id) {
