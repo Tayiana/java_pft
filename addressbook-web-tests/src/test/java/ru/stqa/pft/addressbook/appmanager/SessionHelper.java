@@ -8,7 +8,7 @@ public class SessionHelper extends HelperBase {
   public SessionHelper(WebDriver wd) {
     super(wd);
   }
-  public void login() {
+  public void login(String admin, String secret) {
     type(By.name("user"),"admin");
     type(By.name("pass"),"secret");
     click(By.xpath("//form[@id='LoginForm']/label"));
