@@ -107,7 +107,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String name = element.findElement(By.xpath("./td[3]")).getText();
       String lastname = element.findElement(By.xpath("./td[2]")).getText();
-      contactCache.add(new GroupContacts().withId(id).withFirstname("Name").withMiddlename("Name middle").withLastname("NameLast").withNick("Ленин").withCompany("КПСС").withAddress("Москва, Красная, площадь, 3").withHomephone("+79067777777").withMobilphone("(7925)5656569").withWorkphone("56-89-985").withEmail("email@mail.ru").withEmail2("second@mail.ru").withEmail3("last@mail.ru"));
+      contactCache.add(new GroupContacts().withId(id).withFirstname(name).withLastname(lastname).withNick("Ленин").withCompany("КПСС").withAddress("Москва, Красная, площадь, 3").withHomephone("+79067777777").withMobilphone("(7925)5656569").withWorkphone("56-89-985").withEmail("email@mail.ru").withEmail2("second@mail.ru").withEmail3("last@mail.ru"));
     }
     return new Contacts(contactCache);
   }
@@ -124,7 +124,7 @@ public class ContactHelper extends HelperBase {
       String allEmails = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
 
-      contacts.add(new GroupContacts().withId(id).withLastname("NameLast").withFirstname("Name").withAddress("Москва, Красная площадь, 3")
+      contacts.add(new GroupContacts().withId(id).withLastname("NameLast").withFirstname("Name").withAddress(address)
               .withAllEmails(allEmails).withAllPhones(allPhones));
     }
     return contacts;

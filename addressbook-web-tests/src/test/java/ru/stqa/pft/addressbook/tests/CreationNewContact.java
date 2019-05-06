@@ -1,9 +1,12 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupContacts;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -19,7 +22,7 @@ public class CreationNewContact extends TestBase {
 
 
   @DataProvider
-  public Iterator<Object[]> validContacts() throws IOException {
+  public Iterator<Object[]> validContactsFromXml() throws IOException {
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
     String xml =("");
     String line = reader.readLine();
@@ -33,8 +36,21 @@ public class CreationNewContact extends TestBase {
     return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
 
   }
+  @DataProvider
+  public Iterator<Object[]> validContactsFromJson() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
+    String json =("");
+    String line = reader.readLine();
+    while (line != null) {
+      json += line;
+      line = reader.readLine();
+    }
+    Gson gson = new Gson();
+    List<GroupContacts> contacts = gson.fromJson(json, new TypeToken<List<GroupContacts>>(){}.getType());
+    return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+  }
 
-  @Test (dataProvider = "validContacts")
+  @Test (dataProvider = "validContactsFromJson")
   public void testCreationNewContact(GroupContacts contacts)  {
     app.goTo().GroupContact();
     Contacts before = app.contact().all();
