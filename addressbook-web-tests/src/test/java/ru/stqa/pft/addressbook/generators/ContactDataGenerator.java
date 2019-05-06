@@ -58,28 +58,26 @@ public class ContactDataGenerator {
   private void saveAsJson(List<GroupContacts> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json =gson.toJson(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+    writer.write(json);}
+
   }
 
   private void saveAsXml(List<GroupContacts> groups, File file) throws IOException {
     XStream xStream = new XStream();
     xStream.processAnnotations(GroupContacts.class);
     String xml = xStream.toXML(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(xml); }
   }
 
   private void saveAsCsv(List<GroupContacts> groups, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
+    try (Writer writer = new FileWriter(file)) {
     for (GroupContacts group : groups) {
       writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", group.getFirstname(), group.getMiddlename(), group.getLastname(),group.getNick(), group.getCompany(), group.getAddress(),group.getHome(),group.getMobile(), group.getWork(), group.getEmail(),group.getEmail2(), group.getEmail3()));
+    } }
     }
-    writer.close();
-  }
 
   private List<GroupContacts> generateGroups(int count) {
     List<GroupContacts> groups = new ArrayList<GroupContacts>();
