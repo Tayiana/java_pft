@@ -1,13 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!--
-  ~ Hibernate, Relational Persistence for Idiomatic Java
-  ~
-  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
-  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
-
-
-  -->
-        <!DOCTYPE hibernate-configuration (View Source for full doctype...)>
 <hibernate-configuration>
 <session-factory>
 
@@ -33,7 +23,7 @@
     - <!--  Names the annotated entity class
   -->
     <mapping class="ru.stqa.pft.addressbook.model.GroupData" />
-                <mapping class="ru.stqa.pft.addressbook.model.ContactData" />
+                <mapping class="ru.stqa.pft.addressbook.model.GroupContacts" />
 
 </session-factory>
 </hibernate-configuration>
