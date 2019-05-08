@@ -15,8 +15,10 @@ import java.util.List;
 public class HbConnectionTest {
 
 
-  private Object SessionFactory;
+
   private SessionFactory sessionFactory;
+  private Object SessionFactory;
+
 
   @BeforeClass
   public void setUp() throws Exception {
@@ -56,6 +58,10 @@ public void testHbConnectionForGroups() {
     }
     session.getTransaction().commit();
     session.close();
+  }
+
+  public void setSessionFactory(SessionFactory sessionFactory) {
+    this.sessionFactory = sessionFactory;
   }
 }
 
