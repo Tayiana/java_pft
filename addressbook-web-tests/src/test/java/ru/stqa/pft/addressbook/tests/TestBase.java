@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 public class TestBase {
 
-  Logger logger = LoggerFactory.getLogger(TestBase.class);
+
 
   protected static final ApplicationManager app =
           new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
@@ -39,4 +39,7 @@ public class TestBase {
   public void logTestStop(Method m){
     logger.info("Stop test " + m.getName());
   }
+
+  Logger logger = LoggerFactory.getLogger(TestBase.class);
+
 }

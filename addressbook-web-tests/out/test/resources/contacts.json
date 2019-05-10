@@ -6,7 +6,6 @@
     "nick": "nick 0",
     "company": "company 0",
     "address": "address 0",
-    "home": "phone 0",
     "mobile": "mobilephone 0",
     "work": "workphone 0",
     "email": "email 0",
@@ -20,7 +19,6 @@
     "nick": "nick 1",
     "company": "company 1",
     "address": "address 1",
-    "home": "phone 1",
     "mobile": "mobilephone 1",
     "work": "workphone 1",
     "email": "email 1",
@@ -34,11 +32,23 @@
     "nick": "nick 2",
     "company": "company 2",
     "address": "address 2",
-    "home": "phone 2",
     "mobile": "mobilephone 2",
     "work": "workphone 2",
     "email": "email 2",
     "email2": "email2 2",
     "email3": "email3 2"
+  },
+  {
+    "firstname": "Name 3",
+    "middlename": "middlename 3",
+    "lastname": "NameLast 3",
+    "nick": "nick 3",
+    "company": "company 3",
+    "address": "address 3",
+    "mobile": "mobilephone 3",
+    "work": "workphone 3",
+    "email": "email 3",
+    "email2": "email2 3",
+    "email3": "email3 3"
   }
 ]

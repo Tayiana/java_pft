@@ -22,7 +22,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("lastname"), groupContacts.getLastname());
     type(By.name("nickname"), groupContacts.getNick());
 
-    attach(By.name("photo"),groupContacts.getPhoto());
+    /*attach(By.name("photo"),groupContacts.getPhoto()); */
     type(By.name("company"), groupContacts.getCompany());
     type(By.name("address"), groupContacts.getAddress());
     type(By.name("home"), groupContacts.getHome());
@@ -124,7 +124,7 @@ public class ContactHelper extends HelperBase {
       String allEmails = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
 
-      contacts.add(new GroupContacts().withId(id).withLastname("NameLast").withFirstname("Name").withAddress(address)
+      contacts.add(new GroupContacts().withId(id).withLastname(lastname).withFirstname(firstname).withAddress(address)
               .withAllEmails(allEmails).withAllPhones(allPhones));
     }
     return contacts;

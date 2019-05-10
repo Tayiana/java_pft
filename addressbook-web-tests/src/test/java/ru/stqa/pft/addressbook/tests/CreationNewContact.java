@@ -53,23 +53,23 @@ public class CreationNewContact extends TestBase {
   }
 
   @Test (dataProvider = "validContactsFromJson")
-  public void testCreationNewContact(GroupContacts contacts)  {
+  public void testCreationNewContact(GroupContacts contact)  {
     app.goTo().GroupContact();
-    Contacts before = app.contact().all();
-    app.contact().create(contacts);
+    Contacts before = app.db().contacts();
+    app.contact().create(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size()+1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo
-            (before.withAdded(contacts.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+            (before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
 
-  @Test (enabled = false)
+   /* @Test (enabled = false)
   public void CurrentDir(){
     File currentDir = new File(".");
     System.out.println(currentDir.getAbsolutePath());
     File photo = new File("src/test/resources/picture.jpg");
     System.out.println(photo.getAbsolutePath());
     System.out.println(photo.exists());
-  }
+  } */
 }

@@ -217,6 +217,31 @@ public class GroupContacts {
     this.id = id;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GroupContacts contacts = (GroupContacts) o;
+    return id == contacts.id &&
+            Objects.equals(firstname, contacts.firstname) &&
+            Objects.equals(middlename, contacts.middlename) &&
+            Objects.equals(lastname, contacts.lastname) &&
+            Objects.equals(nick, contacts.nick) &&
+            Objects.equals(company, contacts.company) &&
+            Objects.equals(address, contacts.address) &&
+            Objects.equals(home, contacts.home) &&
+            Objects.equals(mobile, contacts.mobile) &&
+            Objects.equals(work, contacts.work) &&
+            Objects.equals(email, contacts.email) &&
+            Objects.equals(email2, contacts.email2) &&
+            Objects.equals(email3, contacts.email3);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstname, middlename, lastname, nick, company, address, home, mobile, work, email, email2, email3);
+  }
+
   public int getId() { return id;
   }
 
@@ -266,24 +291,19 @@ public class GroupContacts {
   @Override
   public String toString() {
     return "GroupContacts{" +
-            "id='" + id + '\'' +
+            "id=" + id +
             ", firstname='" + firstname + '\'' +
+            ", middlename='" + middlename + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", nick='" + nick + '\'' +
+            ", company='" + company + '\'' +
+            ", address='" + address + '\'' +
+            ", home='" + home + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
             '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    GroupContacts that = (GroupContacts) o;
-    return id == that.id &&
-            Objects.equals(firstname, that.firstname) &&
-            Objects.equals(lastname, that.lastname);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, firstname, lastname);
   }
 }
