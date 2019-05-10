@@ -9,8 +9,6 @@ import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
-
-
 @XStreamAlias("contact")
 @Entity
 @Table(name = "addressbook")
@@ -18,7 +16,7 @@ public class GroupContacts {
 
   @XStreamOmitField
   @Id
-@Column(name = "id")
+  @Column(name = "id")
   private int id =Integer.MAX_VALUE;
   @Expose
   @Column(name = "firstname")
@@ -37,8 +35,9 @@ public class GroupContacts {
   private String company;
   @Expose
   @Column(name = "address")
+  @Type(type = "text")
   private String address;
-  @Expose
+  @Transient
   @Column(name = "home")
   @Type(type = "text")
   private String home;
@@ -55,19 +54,71 @@ public class GroupContacts {
   private String allPhones;
   @Expose
   @Column(name = "email")
+  @Type(type = "text")
   private String email;
   @Expose
   @Column(name = "email2")
+  @Type(type = "text")
   private String email2;
   @Expose
   @Column(name = "email3")
+  @Type(type = "text")
   private String email3;
   @Expose
   @Transient
   private String allEmails;
-  @Column(name = "photo")
-  @Type(type = "text")
+  @Transient
   private String photo;
+
+
+  public void setFirstname(String firstname) {
+    this.firstname = firstname;
+  }
+
+  public void setMiddlename(String middlename) {
+    this.middlename = middlename;
+  }
+
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
+  }
+
+  public void setNick(String nick) {
+    this.nick = nick;
+  }
+
+  public void setCompany(String company) {
+    this.company = company;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public void setHome(String home) {
+    this.home = home;
+  }
+
+  public void setMobile(String mobile) {
+    this.mobile = mobile;
+  }
+
+  public void setWork(String work) {
+    this.work = work;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setEmail2(String email2) {
+    this.email2 = email2;
+  }
+
+  public void setEmail3(String email3) {
+    this.email3 = email3;
+  }
+
 
 
   public File getPhoto() {
