@@ -12,6 +12,8 @@ import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
+  private String nick;
+
   public ContactHelper(WebDriver wd) {
     super(wd);
   }

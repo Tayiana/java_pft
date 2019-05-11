@@ -7,7 +7,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -18,57 +20,81 @@ public class GroupContacts {
   @Id
   @Column(name = "id")
   private int id =Integer.MAX_VALUE;
+
   @Expose
   @Column(name = "firstname")
   private String firstname;
+
   @Expose
   @Column(name = "middlename")
   private String middlename;
+
   @Expose
   @Column(name = "lastname")
   private String lastname;
+
   @Expose
   @Column(name = "nickname")
   private String nick;
+
   @Expose
   @Column(name = "company")
   private String company;
+
   @Expose
   @Column(name = "address")
   @Type(type = "text")
   private String address;
+
   @Expose
   @Column(name = "home")
   @Type(type = "text")
   private String home;
+
   @Expose
   @Column(name = "mobile")
   @Type(type = "text")
   private String mobile;
   @Expose
+
   @Column(name = "work")
   @Type(type = "text")
   private String work;
+
   @Expose
   @Transient
   private String allPhones;
+
   @Expose
   @Column(name = "email")
   @Type(type = "text")
   private String email;
+
   @Expose
   @Column(name = "email2")
   @Type(type = "text")
   private String email2;
+
   @Expose
   @Column(name = "email3")
   @Type(type = "text")
   private String email3;
+
   @Expose
   @Transient
   private String allEmails;
+
   @Transient
   private String photo;
+
+  public Groups getGroups() {
+    return new Groups (groups);
+  }
+
+  @ManyToMany
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
 
   public void setFirstname(String firstname) {
