@@ -37,7 +37,7 @@ public class GroupContacts {
   @Column(name = "address")
   @Type(type = "text")
   private String address;
-  @Transient
+  @Expose
   @Column(name = "home")
   @Type(type = "text")
   private String home;
