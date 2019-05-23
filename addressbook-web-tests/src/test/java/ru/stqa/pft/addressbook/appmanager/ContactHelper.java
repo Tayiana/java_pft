@@ -3,8 +3,11 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupContacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
@@ -155,6 +158,39 @@ public class ContactHelper extends HelperBase {
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
   }
+
+
+  public void chooseContact() {
+    click(By.name("to_group"));
+
+    click(By.name("selected[]"));
+  }
+
+  public void clickAddTo() {
+    click(By.name("add"));
+  }
+
+  public void goToGroupPage(int id) {
+    wd.findElement(By.xpath("./?group='" + id + "'")).click();
+  }
+
+
+  public void addToGroup(GroupContacts contact) {
+    selectContactById(contact.getId());
+    /* if (contact.getGroups().size() > 0 ) {
+      Assert.assertTrue(contact.getGroups().size() == 1);
+      new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(contact.getGroups().iterator().next().getName());
+    } */
+    click(By.name("add"));
+
+  }
+
+  /* public void addToGroup(GroupContacts contact, GroupData group) {
+    selectContactById(contact.getId());
+    wd.findElement(By.name("to_group")).click();
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
+    click(By.name("add"));
+  } */
 
 
 }
